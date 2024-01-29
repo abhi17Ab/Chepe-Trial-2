@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .chess-grid {
+    @apply bg-cell-dark text-cell-light outline -outline-offset-8 outline-8 outline-transparent smooth-transition
+  }
+
+  .chess-grid:nth-child(-2n+7),
+  .chess-grid:nth-child(9) ~ div:nth-child(-2n+16),
+  .chess-grid:nth-child(16) ~ div:nth-child(-2n+23),
+  .chess-grid:nth-child(25) ~ div:nth-child(-2n+32),
+  .chess-grid:nth-child(32) ~ div:nth-child(-2n+39),
+  .chess-grid:nth-child(41) ~ div:nth-child(-2n+48),
+  .chess-grid:nth-child(48) ~ div:nth-child(-2n+55),
+  .chess-grid:nth-child(57) ~ div:nth-child(-2n+64) {
+    @apply bg-cell-light text-cell-dark smooth-transition
+  }
+
+  .btn-3d-base {
+    @apply py-3.5 px-6 rounded-lg cursor-pointer select-none text-center text-white font-bold text-lg
+    active:translate-y-2 active:border-b-[0px] transition-all duration-150 border-b-[1px]
+  }
+  .btn-3d-blue {
+    @apply btn-3d-base bg-blue-500 border-blue-400
+    active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]
+    [box-shadow:0_10px_0_0_#1b6ff8,0_15px_0_0_#1b70f841]
+  }
+  .btn-3d-orange {
+    @apply btn-3d-base bg-orange-500 border-orange-400
+    active:[box-shadow:0_0px_0_0_#fb8c00,0_0px_0_0_#9653003A]
+    [box-shadow:0_10px_0_0_#fb8c00,0_15px_0_0_#9653003A]
+  }
+  .btn-3d-green {
+    @apply btn-3d-base bg-green-500 border-green-400
+    active:[box-shadow:0_0px_0_0_#43a047,0_0px_0_0_#00960A3A]
+    [box-shadow:0_10px_0_0_#43a047,0_15px_0_0_#00960A3A]
+  }
+
+
+
+  /* Newer buttons */
+  .btn-bouncy {
+    @apply active:scale-105
+  }
+
+  .button-base {
+    @apply py-3 px-5 rounded-md text-center font-medium tracking-wide text-white drop-shadow-md shadow-lg border active:outline-none active:ring-2 active:ring-offset-2 active:z-[1] btn-bouncy transition duration-300 ease-out
+  }
+  .button-orange {
+    @apply button-base text-black bg-orange-500 border-orange-500 shadow-orange-500/25 hover:bg-orange-600/80 active:text-gray-300 active:bg-orange-700/80 active:border-orange-700/80 active:ring-orange-500
+  }
+
+
+
+
+  .smooth-transition {
+    @apply transition duration-300 ease-out
+  }
+
+  .input-primary {
+    @apply rounded-lg p-3 mt-1 w-full bg-white/10 border border-gray-600 text-gray-200 placeholder-gray-300/50 shadow-sm hover:ring-1 hover:ring-white/25 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 smooth-transition backdrop-blur-lg
+  }
+  .input-primary-invalid {
+    @apply bg-red-100/10 border-red-600 text-red-200 placeholder-red-300/50 hover:ring-red-500/50 focus:border-red-500 focus:ring-red-500
+  }
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 30vh;
+    background: #4f536e2b;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #525252;
+    border-radius: 100vh;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #404040;
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: Riffic;
+    font-weight: 400;
+    src: url(./fonts/Riffic.woff) format("woff");
+  }
+
+  :root {
+    --color-cell-light: 236 238 212;
+    --color-cell-dark: 116 150 84;
+  }
+}
+
+body {
+  @apply font-riffic
+}
